@@ -39,15 +39,18 @@ function reducer(state, action) {
 //   console.log(history);
 // });
 
-//fetching 
-async function getUser(){
+//fetching Data
+// async function getUser(){
+//     const {data} = await axios.get('http://localhost:3000/accounts/1');
+//     console.log(data);
+// }
+
+// getUser();
+//action creators
+//Now what if i want to get some data asynchronously in action
+async function initUser(value){
     const {data} = await axios.get('http://localhost:3000/accounts/1');
     console.log(data);
-}
-
-getUser();
-//action creators
-function initUser(value){
     return {type:init,payload:value}
 }
 function increase(){
