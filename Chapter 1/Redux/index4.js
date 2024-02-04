@@ -1,5 +1,6 @@
 /* Async in Redux */
 
+import thunk from 'redux-thunk';
 import { createStore,applyMiddleware } from "redux";
 import logger from 'redux-logger';
 import axios from 'axios';
@@ -11,8 +12,7 @@ const incrementByAmount = 'incrementByAmount'
 const init = 'init';
 
 //store
-const store = createStore(reducer,applyMiddleware(logger.default));
-const history = [];
+const store = createStore(reducer,applyMiddleware(logger.default,thunk.default));
 
 //reducer
 function reducer(state, action) {
@@ -30,32 +30,11 @@ function reducer(state, action) {
     }
 }
 
-    /*To access global state*/
-// console.log(store.getState());
-
-//subscribing
-// store.subscribe(() => {
-//   history.push(store.getState());
-//   console.log(history);
-// });
-
-//fetching Data
-// async function getUser(){
-//     const {data} = await axios.get('http://localhost:3000/accounts/1');
-//     console.log(data);
-// }
-
-// getUser();
-//action creators
-//Now what if i want to get some data asynchronously in action
-async function initUser(value){
+async function initUser(dispatch,getState){
     const {data} = await axios.get('http://localhost:3000/accounts/1');
-    console.log(data);
-    return {type:init,payload:data.amount}
+    dispatch({type:init,payload:data.amount});
 }
-/*
-    So now its throwing Error: Actions must be plain objects. It means we cannot perform async task init, action must return plain object but in our case it is promise. 
-*/
+
 function increase(){
     return {type:increment}
 }
@@ -67,7 +46,5 @@ function increaseByAmount(value){
 }
 
 setInterval(() => {
-    store.dispatch(initUser(200));
+    store.dispatch(initUser); 
 }, 1500);
-
-
