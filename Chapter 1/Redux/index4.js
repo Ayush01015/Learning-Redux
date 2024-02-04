@@ -15,7 +15,7 @@ const init = 'init';
 const store = createStore(reducer,applyMiddleware(logger.default,thunk.default));
 
 //reducer
-function reducer(state, action) {
+function reducer(state={ amount: 1 }, action) {
     switch (action.type) {
         case init:
             return { amount: action.payload };    
@@ -30,11 +30,14 @@ function reducer(state, action) {
     }
 }
 
-async function initUser(dispatch,getState){
+async function getUser(dispatch,getState){
     const {data} = await axios.get('http://localhost:3000/accounts/1');
-    dispatch({type:init,payload:data.amount});
+    dispatch(initUser(data.amount));
 }
 
+function initUser(value){
+    return {type:init,payload:value}
+}
 function increase(){
     return {type:increment}
 }
@@ -46,5 +49,5 @@ function increaseByAmount(value){
 }
 
 setInterval(() => {
-    store.dispatch(initUser); 
+    store.dispatch(getUser); 
 }, 1500);
