@@ -30,9 +30,12 @@ function reducer(state={ amount: 1 }, action) {
     }
 }
 
-async function getUser(dispatch,getState){
-    const {data} = await axios.get('http://localhost:3000/accounts/1');
-    dispatch(initUser(data.amount));
+//now what if i want id to be passed ??
+function getUser(id){
+    return async (dispatch,getState)=>{
+        const {data} = await axios.get(`http://localhost:3000/accounts/${id}`);
+        dispatch(initUser(data.amount));
+    }
 }
 
 function initUser(value){
@@ -49,5 +52,5 @@ function increaseByAmount(value){
 }
 
 setInterval(() => {
-    store.dispatch(getUser); 
+    store.dispatch(getUser(2)); //passing id !!!
 }, 1500);
