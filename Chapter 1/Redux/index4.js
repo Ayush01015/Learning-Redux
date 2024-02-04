@@ -51,8 +51,11 @@ function reducer(state, action) {
 async function initUser(value){
     const {data} = await axios.get('http://localhost:3000/accounts/1');
     console.log(data);
-    return {type:init,payload:value}
+    return {type:init,payload:data.amount}
 }
+/*
+    So now its throwing Error: Actions must be plain objects. It means we cannot perform async task init, action must return plain object but in our case it is promise. 
+*/
 function increase(){
     return {type:increment}
 }
@@ -63,8 +66,8 @@ function increaseByAmount(value){
     return {type:incrementByAmount,payload:value};
 }
 
-// setInterval(() => {
-//     store.dispatch(initUser(200));
-// }, 1500);
+setInterval(() => {
+    store.dispatch(initUser(200));
+}, 1500);
 
 
