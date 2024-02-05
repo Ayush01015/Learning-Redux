@@ -54,3 +54,13 @@ function increaseByAmount(value){
 setInterval(() => {
     store.dispatch(getUser(2)); //passing id !!!
 }, 1500);
+
+
+
+//old db.json
+// {
+//     "accounts":[
+//         {"id":1,"amount":200},
+//         {"id":2,"amount":300}
+//     ],
+// }
