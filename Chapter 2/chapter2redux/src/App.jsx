@@ -29,8 +29,8 @@ const App = ({ store }) => {
         }}
       >
         <h3>App</h3>
-        <h2>Current Amount:{account.amount}</h2>
-        <h2>Total Bonus:{bonus.points}</h2>
+        <h2>Current Amount:{store.getState().account.amount}</h2>
+        <h2>Total Bonus:{store.getState().bonus.points}</h2>
       </div>
       <Account
         account={account}

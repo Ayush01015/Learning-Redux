@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import "../App.css";
 const Account = ({
   account,
@@ -9,10 +10,13 @@ const Account = ({
   setIncValue,
   incValue,
 }) => {
+  // useEffect(()=>{
+  //   console.log("store: ",store.getState());
+  // })
   return (
     <div className="container">
       <h3>Account Component</h3>
-      <h4>account: ${account.amount}</h4>
+      <h4>account: ${store.getState().account.amount}</h4>
       <div
         style={{
           display: "flex",
