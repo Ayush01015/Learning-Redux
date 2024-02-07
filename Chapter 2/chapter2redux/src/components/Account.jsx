@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css"
-const Account = () => {
-  const [account, setAccount] = useState({amount:0});
+const Account = ({account,setAccount}) => {
+  
   const [incValue, setincValue] = useState(0);
 
   const handleIncrement = () => {

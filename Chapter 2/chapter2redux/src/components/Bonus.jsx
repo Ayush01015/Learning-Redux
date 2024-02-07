@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import "../App.css";
-const Bonus = () => {
-  const [Bonus, setBonus] = useState(0);
-
+const Bonus = ({bonus,setBonus}) => {
   return (
     <div className="container">
-      <h3>Bonus Component</h3>
-      <h4>Total Points: ${Bonus}</h4>
+      <h3>points Component</h3>
+      <h4>Total Points: ${bonus.points}</h4>
       <div
         style={{
           display: "flex",
           gap: "1rem",
         }}
       >
-        <button onClick={() => setBonus((prev) => prev + 1)} i>
+        <button onClick={() => setBonus({points:bonus.points + 1})}>
           Increment +
         </button>
       </div>
