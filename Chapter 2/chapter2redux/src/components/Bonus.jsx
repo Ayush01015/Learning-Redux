@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 import {increaseBonus} from "../actions/index"
-const Bonus = ({bonus,setBonus,store}) => {
+const Bonus = ({store}) => {
   return (
     <div className="container">
       <h3>points Component</h3>

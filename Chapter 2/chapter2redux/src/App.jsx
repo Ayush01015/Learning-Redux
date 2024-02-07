@@ -8,16 +8,6 @@ const App = ({ store }) => {
   const [bonus, setBonus] = useState({ points: 0 });
   const [incValue, setIncValue] = useState(0);
 
-  const handleIncrement = () => {
-    setAccount({ amount: account.amount + 1 });
-  };
-  const handleDecrement = () => {
-    setAccount({ amount: account.amount - 1 });
-  };
-  const handleIncValue = (incValue) => {
-    setAccount({ amount: account.amount + incValue });
-  };
-
   return (
     <>
       <div
@@ -32,16 +22,8 @@ const App = ({ store }) => {
         <h2>Current Amount:{store.getState().account.amount}</h2>
         <h2>Total Bonus:{store.getState().bonus.points}</h2>
       </div>
-      <Account
-        account={account}
-        store={store}
-        incValue={incValue}
-        setIncValue={setIncValue}
-        handleIncrement={handleIncrement}
-        handleDecrement={handleDecrement}
-        handleIncValue={handleIncValue}
-      />
-      <Bonus bonus={bonus} setBonus={setBonus} store={store} />
+      <Account store={store} incValue={incValue} setIncValue={setIncValue}/>
+      <Bonus store={store} />
     </>
   );
 };

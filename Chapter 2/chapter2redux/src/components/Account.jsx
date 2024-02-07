@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+import {increase,decrease,getUserAccount,increaseByAmount} from "../actions/index"
 import "../App.css";
 const Account = ({
   account,
   store,
-  handleIncValue,
-  handleDecrement,
-  handleIncrement,
-  setIncValue,
   incValue,
+  setIncValue,
 }) => {
   // useEffect(()=>{
   //   console.log("store: ",store.getState());
@@ -23,13 +20,13 @@ const Account = ({
           gap: "1rem",
         }}
       >
-        <button onClick={handleIncrement}>Increment +</button>
-        <button onClick={handleDecrement}>decrement -</button>
+        <button onClick={()=>store.dispatch(increase())}>Increment +</button>
+        <button onClick={()=>store.dispatch(decrease())}>decrement -</button>
         <input
           value={incValue}
           onChange={(e) => setIncValue(+e.target.value)}
         />
-        <button onClick={() => handleIncValue(incValue)}>
+        <button onClick={()=>store.dispatch(increaseByAmount(incValue))}>
           Increment by {incValue} +
         </button>
       </div>
