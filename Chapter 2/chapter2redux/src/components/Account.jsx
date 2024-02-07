@@ -1,21 +1,16 @@
-import React, { useState } from "react";
-import "../App.css"
-const Account = ({account,setAccount}) => {
-  
-  const [incValue, setincValue] = useState(0);
-
-  const handleIncrement = () => {
-    setAccount({amount:account.amount + 1});
-  };
-  const handleDecrement = () => {
-    setAccount({amount:account.amount - 1});
-  };
-  const handleIncValue = (incValue) => {
-    setAccount({amount:account.amount + incValue});
-  };
-
+import React, { useState, useEffect } from "react";
+import "../App.css";
+const Account = ({
+  account,
+  store,
+  handleIncValue,
+  handleDecrement,
+  handleIncrement,
+  setIncValue,
+  incValue,
+}) => {
   return (
-    <div className="container"  >
+    <div className="container">
       <h3>Account Component</h3>
       <h4>account: ${account.amount}</h4>
       <div
@@ -24,14 +19,13 @@ const Account = ({account,setAccount}) => {
           gap: "1rem",
         }}
       >
-        <button onClick={handleIncrement} i>
-          Increment +
-        </button>
-        <button onClick={handleDecrement} i>
-          decrement -
-        </button>
-        <input value={incValue} onChange={(e) => setincValue(+(e.target.value))} />
-        <button onClick={()=>handleIncValue(incValue)}>
+        <button onClick={handleIncrement}>Increment +</button>
+        <button onClick={handleDecrement}>decrement -</button>
+        <input
+          value={incValue}
+          onChange={(e) => setIncValue(+e.target.value)}
+        />
+        <button onClick={() => handleIncValue(incValue)}>
           Increment by {incValue} +
         </button>
       </div>
