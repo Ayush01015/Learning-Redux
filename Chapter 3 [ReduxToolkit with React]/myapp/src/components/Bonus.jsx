@@ -9,8 +9,8 @@ const Bonus = ({account,points}) => {
   return (
     <div className="container">
       <h3>points Component</h3>
-      <h2>Amount: {account}</h2>
-      <h4>Total Points: {points}</h4>
+      <h2>Amount: <span className="amount">${account}</span></h2>
+      <h4>Total Points: <span className="amount bonus">{points}</span></h4>
       <div
         style={{
           display: "flex",

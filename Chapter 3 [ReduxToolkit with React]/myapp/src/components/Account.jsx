@@ -8,8 +8,8 @@ const Account = ({ incValue, setIncValue, account, points }) => {
   return (
     <div className="container">
       <h3>Account Component</h3>
-      <h4>account: ${account}</h4>
-      <h4>Points: ${points}</h4>
+      <h2>Amount: <span className="amount">${account}</span></h2>
+      <h4>Total Points: <span className="amount bonus">{points}</span></h4>
       <div
         style={{
           display: "flex",
