@@ -1,8 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice,createAction } from '@reduxjs/toolkit'
+import { increment as incrementBonus } from './bonusSlice';
 
 const initialState = {
   amount: 1,
 }
+
 
 export const accountSlice = createSlice({
   name: 'account',

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment } from "../reducers/reward";
+import { increment, incrementByAmount } from "../reducers/reward";
 import "../App.css";
+
 
 const Reward = () => {
   const points = useSelector((state) => state.reward.points);
@@ -17,6 +18,7 @@ const Reward = () => {
         }}
       >
         <button onClick={() => dispatch(increment())}>Increment +</button>
+        <button onClick={() => dispatch(incrementByAmount(7))}>Increment By +7</button>
       </div>
     </div>
   );
