@@ -1,0 +1,25 @@
+
+button{
+  padding: 0.5rem 1rem;
+  background-color: yellow;
+  color: black;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+input{
+  padding: 0.5rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid yellow;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  margin: 0.5rem;
+}
+h3{
+  color: rgb(215, 40, 69);
+}
