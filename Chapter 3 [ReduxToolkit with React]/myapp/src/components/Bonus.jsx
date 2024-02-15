@@ -1,21 +1,23 @@
 import React, { useState } from "react";
+import { useSelector,useDispatch } from "react-redux";
+import { increment } from "../Slices/bonusSlice";
 import "../App.css";
 
 
-const Bonus = () => {
-
-const [bonus,setBonus] = useState({points:0})
+const Bonus = ({account,points}) => {
+  const dispatch = useDispatch();
   return (
     <div className="container">
       <h3>points Component</h3>
-      <h4>Total Points: {bonus.points}</h4>
+      <h2>Amount: {account}</h2>
+      <h4>Total Points: {points}</h4>
       <div
         style={{
           display: "flex",
           gap: "1rem",
         }}
       >
-        <button onClick={()=>setBonus(prev => ({points:prev.points + 1}))}>
+        <button onClick={() =>dispatch(increment())}>
           Increment +
         </button>
       </div>

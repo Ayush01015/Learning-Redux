@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 
 const App = () => {
   const [incValue, setIncValue] = useState(0);
+  const account = useSelector((state) => state.account.amount);
+  const points = useSelector((state) => state.bonus.points);
   return (
     <>
       <div
@@ -17,11 +19,16 @@ const App = () => {
         }}
       >
         <h3>App</h3>
-        <h2>Current Amount:</h2>
-        <h2>Total Bonus:</h2>
+        <h2>Current Amount: {account}</h2>
+        <h2>Total Bonus: {points}</h2>
       </div>
-      <Account incValue={incValue} setIncValue={setIncValue} />
-      <Bonus />
+      <Account
+        account={account}
+        points={points}
+        incValue={incValue}
+        setIncValue={setIncValue}
+      />
+      <Bonus account={account} points={points} />
     </>
   );
 };

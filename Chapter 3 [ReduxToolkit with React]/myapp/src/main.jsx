@@ -5,15 +5,19 @@ import "./index.css";
 import { configureStore } from "@reduxjs/toolkit";
 import accountReducer from "./Slices/accountSlice.js";
 import bonusReducer from "./Slices/bonusSlice.js";
+import { Provider } from "react-redux";
 
 const store = configureStore({
-  reducer:{
-    account:accountReducer,
-    bonus:bonusReducer,
-  }
-})
+  reducer: {
+    account: accountReducer,
+    bonus: bonusReducer,
+  },
+});
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <Provider store={store}>
       <App />
+    </Provider>
   </React.StrictMode>
 );
