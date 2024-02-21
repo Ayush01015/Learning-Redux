@@ -23,4 +23,4 @@ export const rewardReducer = createReducer(initialState, (builder) => {
         state.points++;
       }
     });
-});
+}); 
